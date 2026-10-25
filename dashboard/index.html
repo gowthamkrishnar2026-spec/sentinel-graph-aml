@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Graph | Forensic AML & Fraud Detection System</title>
+  <meta name="description" content="Enterprise Anti-Money Laundering forensic analytics using Neo4j Graph Data Science, PageRank, Betweenness Centrality, Louvain Communities, and ML ensemble on the IBM HI-Small AML dataset.">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=19">
+  <!-- D3.js for interactive graph visualization -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-spinner">
+      <div class="spinner-ring"></div>
+      <div class="spinner-text">
+        <h3>SENTINEL GRAPH</h3>
+        <p>Initializing AML Forensic Engine...</p>
+        <span class="spinner-sub">Loading IBM HI-Small dataset • Building graph topology • Training ML models</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-container">
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+      <div class="brand-group">
+        <div class="brand-logo">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+          </svg>
+        </div>
+        <div class="brand-title">
+          <div class="brand-name">SENTINEL GRAPH <span class="badge-neo4j" id="badgeEngine">IBM HI-Small AML</span></div>
+          <div class="brand-desc">Forensic AML & Multi-Hop Laundering Network Analytics</div>
+        </div>
+      </div>
+
+
+
+      <div class="nav-status-controls">
+        <button id="btnReloadData" class="btn btn-secondary" title="Re-stratify & reload genuine IBM dataset">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Reload IBM Data
+        </button>
+        <button id="btnSyncNeo4j" class="btn btn-secondary" title="Sync memory data into live Neo4j database">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          Sync to Neo4j
+        </button>
+        <button id="btnExportSAR" class="btn btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export SAR Dossier
+        </button>
+        <div class="status-indicator">
+          <span class="status-dot " id="engineDot"></span>
+          <span id="engineStatusText">Initializing...</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Top KPI Cards -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">MONITORED ACCOUNTS</div>
+        <div class="kpi-value" id="kpiAccounts">—</div>
+        <div class="kpi-subtext" id="kpiBankCount">Active graph nodes</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">TOTAL TRANSACTIONS</div>
+        <div class="kpi-value" id="kpiTransfers">—</div>
+        <div class="kpi-subtext">IBM HI-Small account sample</div>
+      </div>
+      <div class="kpi-card highlight-danger">
+        <div class="kpi-label">LABELLED LAUNDERING TX</div>
+        <div class="kpi-value" id="kpiLaunderingVolume">—</div>
+        <div class="kpi-subtext" id="kpiImbalance">Class imbalance ratio</div>
+      </div>
+      <div class="kpi-card highlight-accent">
+        <div class="kpi-label">DETECTED RINGS (CYCLES)</div>
+        <div class="kpi-value" id="kpiRings">—</div>
+        <div class="kpi-subtext">3-5 Hop Circular Layering Paths</div>
+      </div>
+      <div class="kpi-card highlight-success">
+        <div class="kpi-label">GRAPH ML PR-AUC LIFT</div>
+        <div class="kpi-value" id="kpiPRAUC">+0.0%</div>
+        <div class="kpi-subtext" id="kpiPRAUCSub">Full-data strict temporal evaluation</div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <nav class="view-tabs">
+      <button class="tab-btn active" data-tab="graphView">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+        Network Graph
+      </button>
+      <button class="tab-btn" data-tab="ringsView">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+        <span>Rings (<span id="tabCycleCount">0</span>)</span>
+      </button>
+      <button class="tab-btn" data-tab="leadsView">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        Alert Queue
+      </button>
+      <button class="tab-btn" data-tab="modelView">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Model Benchmark
+      </button>
+      <button class="tab-btn" data-tab="ablationView">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+        Ablation Study
+      </button>
+      <button class="tab-btn" data-tab="shapView">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        SHAP
+      </button>
+      <button class="tab-btn" data-tab="cypherConsoleView">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+        Cypher Studio
+      </button>
+    </nav>
+
+    <!-- Main Content Panels -->
+    <main class="main-workspace">
+
+      <!-- 1. GRAPH VISUALIZER VIEW -->
+      <section id="graphView" class="tab-content active">
+        <div class="graph-layout">
+          <div class="graph-canvas-container">
+            <div class="graph-toolbar">
+              <div class="toolbar-group">
+                <span class="toolbar-label">Filter:</span>
+                <button id="btnHighlightAll" class="btn-chip active">All Nodes</button>
+                <button id="btnHighlightCycles" class="btn-chip danger">Laundering Rings</button>
+                <button id="btnHighlightBridges" class="btn-chip warning">High Centrality</button>
+              </div>
+              <div class="toolbar-group">
+                <button id="btnResetGraph" class="btn-icon" title="Reset Zoom">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
+                </button>
+              </div>
+            </div>
+
+            <div id="graphSvgContainer"></div>
+
+            <div class="graph-legend">
+              <div class="legend-item"><span class="legend-dot ring"></span> Ring member</div>
+              <div class="legend-item"><span class="legend-dot bridge"></span> Bridge</div>
+              <div class="legend-item"><span class="legend-dot normal"></span> Other account</div>
+              <div class="legend-item"><span class="legend-edge-normal"></span> Transfer</div>
+              <div class="legend-item"><span class="legend-edge-danger"></span> Labelled laundering</div>
+            </div>
+          </div>
+
+          <!-- Side Inspector -->
+          <div class="graph-side-panel">
+            <div class="panel-header">
+              <h3>Account Inspector</h3>
+              <span class="badge" id="sideInspectorBadge">Click node</span>
+            </div>
+            <div id="sideInspectorContent" class="side-inspector-body">
+              <div class="empty-state">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <p>Select any account node to inspect its PageRank, Betweenness, Flow Asymmetry, and transaction history.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. LAUNDERING RINGS -->
+      <section id="ringsView" class="tab-content">
+        <div class="section-banner">
+          <div>
+            <h2>Multi-Hop Circular Path Detection</h2>
+            <p>Cypher: <code>MATCH path = (a:Account)-[:TRANSFER*3..5]->(a)</code></p>
+            <p class="evaluation-note" id="ringsConfirmed"></p>
+          </div>
+          <div class="banner-stat">
+            <span class="big-num" id="totalRingVolume">0</span>
+            <span class="sub">Total volume in detected rings (mixed currencies)</span>
+          </div>
+        </div>
+        <div class="rings-grid" id="ringsListContainer"></div>
+      </section>
+
+      <!-- 3. ALERT QUEUE -->
+      <section id="leadsView" class="tab-content">
+        <div class="section-banner">
+          <div>
+            <h2>Human-in-the-Loop Triage Queue</h2>
+            <p>Top 60 transfers by risk score (average of graph-augmented RF and GB), taken from the latest 25% of the sample, which the live model never trained on.</p>
+          </div>
+          <div class="filter-controls">
+            <input type="text" id="leadSearch" class="input-search" placeholder="Search account, bank...">
+            <select id="leadFilterCategory" class="select-filter">
+              <option value="ALL">All</option>
+              <option value="HIGH_RISK">High Risk (&ge; 85%)</option>
+              <option value="CYCLES">Circular Rings</option>
+              <option value="STRUCTURING">Below 10K (structuring)</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-card">
+          <table class="data-table" id="leadsTable">
+            <thead>
+              <tr>
+                <th>Risk</th>
+                <th>Sender</th>
+                <th>Bank</th>
+                <th>Receiver</th>
+                <th>Bank</th>
+                <th>Amount</th>
+                <th>Format</th>
+                <th>Graph Indicators</th>
+                <th>Label</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="leadsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 4. MODEL BENCHMARK -->
+      <section id="modelView" class="tab-content">
+        <div class="section-banner">
+          <div>
+            <h2>Model Benchmark & Precision-Recall</h2>
+            <p>Tabular baseline vs graph-augmented model under severe class imbalance (~0.1% laundering).</p>
+            <p class="evaluation-note"></p>
+          </div>
+        </div>
+        <div class="model-comparison-grid">
+          <div class="model-card">
+            <div class="model-badge baseline">Baseline</div>
+            <h3>Tabular ML (Random Forest)</h3>
+            <p class="model-desc">Amount, hour, payment format, currency, cross-bank &amp; self-transfer flags.</p>
+            <div class="metric-row">
+              <div class="metric-col"><span class="m-label">ROC-AUC</span><span class="m-val" id="tabRoc">-</span></div>
+              <div class="metric-col"><span class="m-label">PR-AUC</span><span class="m-val" id="tabPr">-</span></div>
+              <div class="metric-col"><span class="m-label">Precision@50</span><span class="m-val" id="tabPrec">-</span></div>
+              <div class="metric-col"><span class="m-label">Precision@100</span><span class="m-val" id="tabRec">-</span></div>
+            </div>
+            <div class="model-verdict negative">
+              Sees each transaction in isolation, so it cannot recognise rings, bridges or pass-through accounts.
+            </div>
+          </div>
+          <div class="model-card active-champion">
+            <div class="model-badge champion">Best Model</div>
+            <h3>Graph-Augmented Gradient Boosting</h3>
+            <p class="model-desc">PageRank, Betweenness, Louvain, Flow Asymmetry, Cycles.</p>
+            <div class="metric-row">
+              <div class="metric-col"><span class="m-label">ROC-AUC</span><span class="m-val highlight" id="graphRoc">-</span></div>
+              <div class="metric-col"><span class="m-label">PR-AUC</span><span class="m-val highlight" id="graphPr">-</span></div>
+              <div class="metric-col"><span class="m-label">Precision@50</span><span class="m-val highlight" id="graphPrec">-</span></div>
+              <div class="metric-col"><span class="m-label">Precision@100</span><span class="m-val highlight" id="graphRec">-</span></div>
+            </div>
+            <div class="model-verdict positive">
+              Higher PR-AUC and Precision@K by adding network structure around both accounts.
+            </div>
+          </div>
+        </div>
+        <div class="charts-row">
+          <div class="chart-card">
+            <h3>Precision-Recall Curve</h3>
+            <p class="card-subtext">PR-AUC is the key metric for highly imbalanced AML data (~0.1% laundering).</p>
+            <div id="prCurveContainer" style="width:100%; height:260px;"></div>
+          </div>
+          <div class="chart-card">
+            <h3>Confusion Matrix (score &ge; 0.5) &amp; Precision@K</h3>
+            <div class="cm-container" id="cmContainer"></div>
+            <div id="precisionAtKContainer" style="margin-top:1rem;"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. ABLATION STUDY -->
+      <section id="ablationView" class="tab-content">
+        <div class="section-banner">
+          <div>
+            <h2>Ablation Study: Graph Feature Lift</h2>
+            <p>Change in PR-AUC as each graph feature group is added (Random Forest per stage).</p>
+            <p class="evaluation-note"></p>
+          </div>
+        </div>
+        <div class="table-card" style="margin-bottom:1.5rem;">
+          <table class="data-table" id="ablationTable">
+            <thead>
+              <tr>
+                <th>Stage</th>
+                <th>Feature Group</th>
+                <th>Description</th>
+                <th>#</th>
+                <th>PR-AUC</th>
+                <th>ROC-AUC</th>
+                <th>Lift</th>
+              </tr>
+            </thead>
+            <tbody id="ablationTableBody"></tbody>
+          </table>
+        </div>
+        <div class="chart-card">
+          <h3>Cumulative PR-AUC Progression</h3>
+          <div id="ablationChartContainer" style="width:100%; height:280px; margin-top:1rem;"></div>
+        </div>
+      </section>
+
+      <!-- 6. SHAP EXPLAINABILITY -->
+      <section id="shapView" class="tab-content">
+        <div class="section-banner">
+          <div>
+            <h2>SHAP Feature Explainability</h2>
+            <p>TreeExplainer feature attribution showing how topological metrics drive fraud classifications.</p>
+            <p class="evaluation-note"></p>
+          </div>
+        </div>
+        <div class="charts-row">
+          <div class="chart-card" style="flex:1;">
+            <h3>Random Forest Feature Importance</h3>
+            <p class="card-subtext">Share of impurity reduction in the graph-augmented Random Forest.</p>
+            <div class="feature-bar-list" id="featureImportanceList"></div>
+          </div>
+          <div class="chart-card" style="flex:1;">
+            <h3>SHAP Interpretation</h3>
+            <p class="card-subtext">Mean absolute SHAP value per feature (impact on predicted risk).</p>
+            <div id="shapInsightsContainer" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+          </div>
+        </div>
+        <div class="chart-card" style="margin-top:1.25rem;">
+          <h3>What each feature means</h3>
+          <p class="card-subtext">All 45 inputs to the models. Graph features are computed for the sender (src_) and the receiver (dst_) of each transfer.</p>
+          <div class="feature-glossary" id="featureGlossary"></div>
+        </div>
+      </section>
+
+      <!-- 7. CYPHER STUDIO -->
+      <section id="cypherConsoleView" class="tab-content">
+        <div class="section-banner">
+          <div>
+            <h2>Interactive Cypher Studio</h2>
+            <p>Execute graph queries against the forensic AML schema.</p>
+          </div>
+        </div>
+        <div class="cypher-layout">
+          <div class="cypher-editor-card">
+            <div class="cypher-controls">
+              <span class="cypher-label">Templates:</span>
+              <select id="cypherTemplateSelect" class="select-filter">
+                <option value="cycle">1. Laundering Cycles (3-5 hops)</option>
+                <option value="smurf">2. Smurfing Fan-In (< $10K)</option>
+                <option value="pagerank">3. PageRank Centrality</option>
+                <option value="betweenness">4. Betweenness (Mule Bridge)</option>
+                <option value="louvain">5. Louvain Communities</option>
+              </select>
+              <button id="btnRunCypher" class="btn btn-primary">Run Query</button>
+            </div>
+            <textarea id="cypherQueryInput" class="cypher-textarea" rows="6"></textarea>
+          </div>
+          <div class="cypher-results-card">
+            <div class="results-header">
+              <h3>Query Output</h3>
+              <div class="cypher-view-toggles" style="display:flex; gap:0.4rem; margin-left:auto; margin-right:0.75rem;">
+                <button id="btnViewCypherTable" class="btn-chip active" style="font-size:0.7rem; padding:0.2rem 0.5rem;">Table View</button>
+                <button id="btnViewCypherJson" class="btn-chip" style="font-size:0.7rem; padding:0.2rem 0.5rem;">JSON View</button>
+              </div>
+              <span id="cypherResultStatus" class="badge">Ready</span>
+            </div>
+            <div id="cypherResultsBody" class="cypher-results-container" style="overflow-x:auto;">
+              <div id="cypherTableContainer" style="display:block; width:100%;"></div>
+              <pre id="cypherJsonResult" style="display:none;">Click 'Run Query' to execute...</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Account Modal -->
+  <div id="accountModal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h2 id="modalAccountTitle">Account Dossier</h2>
+          <span class="modal-subtitle" id="modalAccountBank">Bank: -</span>
+        </div>
+        <button id="btnCloseModal" class="btn-icon">&times;</button>
+      </div>
+      <div class="modal-body" id="modalAccountContent"></div>
+      <div class="modal-footer">
+        <button id="btnModalClose" class="btn btn-secondary">Close</button>
+        <button id="btnGenerateSARModal" class="btn btn-primary">Generate SAR</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAR Modal -->
+  <div id="sarModal" class="modal-backdrop">
+    <div class="modal-card" style="max-width:900px;">
+      <div class="modal-header">
+        <div>
+          <h2 style="color:var(--accent-danger);">Suspicious Activity Report</h2>
+          <span class="modal-subtitle" id="sarModalSubtitle">FinCEN / FIU Statutory Filing Dossier</span>
+        </div>
+        <button id="btnCloseSarModal" class="btn-icon">&times;</button>
+      </div>
+      <div class="modal-body" id="sarModalContent" style="font-size:0.85rem; line-height:1.6;"></div>
+      <div class="modal-footer">
+        <button id="btnCloseSarFooter" class="btn btn-secondary">Close</button>
+        <button id="btnDownloadSarJson" class="btn btn-primary">Download SAR (JSON)</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js?v=19"></script>
+</body>
+</html>

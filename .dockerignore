@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+.git/
+.gitignore
+.env
+.venv
+env/
+venv/
+.DS_Store
+*.log
+data/HI-Small_Trans.csv
+data/HI-Small_Trans.csv.zip

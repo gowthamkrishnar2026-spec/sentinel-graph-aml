@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
+venv/
+
+# Large data files (download separately)
+data/HI-Small_Trans.csv
+data/HI-Small_Trans.csv.zip
+data/sample_aml_data.csv
+
+# Docker
+neo4j_data/
+neo4j_logs/
+
+# Editor / agent tooling
+.claude/
+.agents/
+*.code-workspace
+.DS_Store

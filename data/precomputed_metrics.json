@@ -1,0 +1,1588 @@
+{
+ "tabular_baseline": {
+  "roc_auc": 0.9208,
+  "pr_auc": 0.0447,
+  "precision": 0.0105,
+  "recall": 0.8606,
+  "f1": 0.0207,
+  "precision_at_k": {
+   "P@10": 0.1,
+   "P@25": 0.04,
+   "P@50": 0.1,
+   "P@100": 0.17
+  },
+  "threshold": 0.5,
+  "confusion_matrix": {
+   "true_negatives": 1150227,
+   "false_positives": 117633,
+   "false_negatives": 202,
+   "true_positives": 1247,
+   "total_transactions": 1269309,
+   "actual_laundering_count": 1449
+  },
+  "roc_curve": [
+   {
+    "x": 0.0,
+    "y": 0.0
+   },
+   {
+    "x": 0.0399,
+    "y": 0.6743
+   },
+   {
+    "x": 0.0578,
+    "y": 0.7916
+   },
+   {
+    "x": 0.0753,
+    "y": 0.8433
+   },
+   {
+    "x": 0.089,
+    "y": 0.8578
+   },
+   {
+    "x": 0.1013,
+    "y": 0.873
+   },
+   {
+    "x": 0.1168,
+    "y": 0.8772
+   },
+   {
+    "x": 0.1308,
+    "y": 0.8785
+   },
+   {
+    "x": 0.1428,
+    "y": 0.8813
+   },
+   {
+    "x": 0.1571,
+    "y": 0.8875
+   },
+   {
+    "x": 0.1705,
+    "y": 0.8896
+   },
+   {
+    "x": 0.1883,
+    "y": 0.893
+   },
+   {
+    "x": 0.2093,
+    "y": 0.8979
+   },
+   {
+    "x": 0.2368,
+    "y": 0.9034
+   },
+   {
+    "x": 0.2705,
+    "y": 0.9061
+   },
+   {
+    "x": 0.3147,
+    "y": 0.913
+   },
+   {
+    "x": 0.3485,
+    "y": 0.9206
+   },
+   {
+    "x": 0.3817,
+    "y": 0.9248
+   },
+   {
+    "x": 0.4129,
+    "y": 0.9289
+   },
+   {
+    "x": 0.4459,
+    "y": 0.9324
+   },
+   {
+    "x": 0.4937,
+    "y": 0.9372
+   },
+   {
+    "x": 0.5319,
+    "y": 0.9455
+   },
+   {
+    "x": 0.5843,
+    "y": 0.9565
+   },
+   {
+    "x": 0.6322,
+    "y": 0.9662
+   },
+   {
+    "x": 0.6924,
+    "y": 0.9752
+   },
+   {
+    "x": 0.74,
+    "y": 0.9772
+   },
+   {
+    "x": 0.7793,
+    "y": 0.9807
+   },
+   {
+    "x": 0.8091,
+    "y": 0.9855
+   },
+   {
+    "x": 0.8383,
+    "y": 0.989
+   },
+   {
+    "x": 0.8649,
+    "y": 0.9917
+   },
+   {
+    "x": 0.8892,
+    "y": 0.9945
+   },
+   {
+    "x": 0.9093,
+    "y": 0.9952
+   },
+   {
+    "x": 0.9221,
+    "y": 0.9993
+   },
+   {
+    "x": 0.9347,
+    "y": 1.0
+   },
+   {
+    "x": 0.9452,
+    "y": 1.0
+   },
+   {
+    "x": 0.9564,
+    "y": 1.0
+   },
+   {
+    "x": 0.9717,
+    "y": 1.0
+   },
+   {
+    "x": 0.982,
+    "y": 1.0
+   },
+   {
+    "x": 0.9892,
+    "y": 1.0
+   },
+   {
+    "x": 1.0,
+    "y": 1.0
+   }
+  ],
+  "pr_curve": [
+   {
+    "x": 0.0,
+    "y": 1.0
+   },
+   {
+    "x": 0.025,
+    "y": 0.1332
+   },
+   {
+    "x": 0.05,
+    "y": 0.1078
+   },
+   {
+    "x": 0.075,
+    "y": 0.1078
+   },
+   {
+    "x": 0.1,
+    "y": 0.1078
+   },
+   {
+    "x": 0.125,
+    "y": 0.0952
+   },
+   {
+    "x": 0.15,
+    "y": 0.0919
+   },
+   {
+    "x": 0.175,
+    "y": 0.067
+   },
+   {
+    "x": 0.2,
+    "y": 0.067
+   },
+   {
+    "x": 0.225,
+    "y": 0.067
+   },
+   {
+    "x": 0.25,
+    "y": 0.067
+   },
+   {
+    "x": 0.275,
+    "y": 0.0663
+   },
+   {
+    "x": 0.3,
+    "y": 0.0638
+   },
+   {
+    "x": 0.325,
+    "y": 0.0598
+   },
+   {
+    "x": 0.35,
+    "y": 0.0559
+   },
+   {
+    "x": 0.375,
+    "y": 0.0506
+   },
+   {
+    "x": 0.4,
+    "y": 0.0406
+   },
+   {
+    "x": 0.425,
+    "y": 0.0386
+   },
+   {
+    "x": 0.45,
+    "y": 0.0329
+   },
+   {
+    "x": 0.475,
+    "y": 0.031
+   },
+   {
+    "x": 0.5,
+    "y": 0.0301
+   },
+   {
+    "x": 0.525,
+    "y": 0.0285
+   },
+   {
+    "x": 0.55,
+    "y": 0.0261
+   },
+   {
+    "x": 0.575,
+    "y": 0.0242
+   },
+   {
+    "x": 0.6,
+    "y": 0.0236
+   },
+   {
+    "x": 0.625,
+    "y": 0.0217
+   },
+   {
+    "x": 0.65,
+    "y": 0.0205
+   },
+   {
+    "x": 0.675,
+    "y": 0.0189
+   },
+   {
+    "x": 0.7,
+    "y": 0.0189
+   },
+   {
+    "x": 0.725,
+    "y": 0.0188
+   },
+   {
+    "x": 0.75,
+    "y": 0.018
+   },
+   {
+    "x": 0.775,
+    "y": 0.0169
+   },
+   {
+    "x": 0.8,
+    "y": 0.0144
+   },
+   {
+    "x": 0.825,
+    "y": 0.0134
+   },
+   {
+    "x": 0.85,
+    "y": 0.0119
+   },
+   {
+    "x": 0.875,
+    "y": 0.0092
+   },
+   {
+    "x": 0.9,
+    "y": 0.0046
+   },
+   {
+    "x": 0.925,
+    "y": 0.0027
+   },
+   {
+    "x": 0.95,
+    "y": 0.002
+   },
+   {
+    "x": 0.975,
+    "y": 0.0016
+   },
+   {
+    "x": 1.0,
+    "y": 0.0012
+   }
+  ]
+ },
+ "graph_random_forest": {
+  "roc_auc": 0.9665,
+  "pr_auc": 0.0716,
+  "precision": 0.0069,
+  "recall": 0.9579,
+  "f1": 0.0136,
+  "precision_at_k": {
+   "P@10": 1.0,
+   "P@25": 0.92,
+   "P@50": 0.62,
+   "P@100": 0.39
+  },
+  "threshold": 0.5,
+  "confusion_matrix": {
+   "true_negatives": 1067066,
+   "false_positives": 200794,
+   "false_negatives": 61,
+   "true_positives": 1388,
+   "total_transactions": 1269309,
+   "actual_laundering_count": 1449
+  },
+  "roc_curve": [
+   {
+    "x": 0.0,
+    "y": 0.0
+   },
+   {
+    "x": 0.0293,
+    "y": 0.7115
+   },
+   {
+    "x": 0.0553,
+    "y": 0.8206
+   },
+   {
+    "x": 0.0865,
+    "y": 0.8744
+   },
+   {
+    "x": 0.1214,
+    "y": 0.9227
+   },
+   {
+    "x": 0.1583,
+    "y": 0.9579
+   },
+   {
+    "x": 0.1935,
+    "y": 0.9931
+   },
+   {
+    "x": 0.2176,
+    "y": 0.9945
+   },
+   {
+    "x": 0.2415,
+    "y": 0.9965
+   },
+   {
+    "x": 0.2675,
+    "y": 0.9979
+   },
+   {
+    "x": 0.2934,
+    "y": 0.9979
+   },
+   {
+    "x": 0.3187,
+    "y": 0.9986
+   },
+   {
+    "x": 0.3431,
+    "y": 0.9986
+   },
+   {
+    "x": 0.3679,
+    "y": 0.9986
+   },
+   {
+    "x": 0.3925,
+    "y": 0.9986
+   },
+   {
+    "x": 0.4167,
+    "y": 0.9986
+   },
+   {
+    "x": 0.441,
+    "y": 0.9993
+   },
+   {
+    "x": 0.4656,
+    "y": 0.9993
+   },
+   {
+    "x": 0.49,
+    "y": 0.9993
+   },
+   {
+    "x": 0.5141,
+    "y": 0.9993
+   },
+   {
+    "x": 0.5379,
+    "y": 0.9993
+   },
+   {
+    "x": 0.5614,
+    "y": 0.9993
+   },
+   {
+    "x": 0.5849,
+    "y": 0.9993
+   },
+   {
+    "x": 0.608,
+    "y": 0.9993
+   },
+   {
+    "x": 0.6313,
+    "y": 1.0
+   },
+   {
+    "x": 0.6549,
+    "y": 1.0
+   },
+   {
+    "x": 0.678,
+    "y": 1.0
+   },
+   {
+    "x": 0.7008,
+    "y": 1.0
+   },
+   {
+    "x": 0.7241,
+    "y": 1.0
+   },
+   {
+    "x": 0.7479,
+    "y": 1.0
+   },
+   {
+    "x": 0.7743,
+    "y": 1.0
+   },
+   {
+    "x": 0.7987,
+    "y": 1.0
+   },
+   {
+    "x": 0.822,
+    "y": 1.0
+   },
+   {
+    "x": 0.8457,
+    "y": 1.0
+   },
+   {
+    "x": 0.872,
+    "y": 1.0
+   },
+   {
+    "x": 0.8985,
+    "y": 1.0
+   },
+   {
+    "x": 0.9255,
+    "y": 1.0
+   },
+   {
+    "x": 0.954,
+    "y": 1.0
+   },
+   {
+    "x": 0.9771,
+    "y": 1.0
+   },
+   {
+    "x": 1.0,
+    "y": 1.0
+   }
+  ],
+  "pr_curve": [
+   {
+    "x": 0.0,
+    "y": 1.0
+   },
+   {
+    "x": 0.025,
+    "y": 0.5211
+   },
+   {
+    "x": 0.05,
+    "y": 0.2169
+   },
+   {
+    "x": 0.075,
+    "y": 0.1368
+   },
+   {
+    "x": 0.1,
+    "y": 0.1113
+   },
+   {
+    "x": 0.125,
+    "y": 0.0864
+   },
+   {
+    "x": 0.15,
+    "y": 0.0774
+   },
+   {
+    "x": 0.175,
+    "y": 0.0714
+   },
+   {
+    "x": 0.2,
+    "y": 0.0667
+   },
+   {
+    "x": 0.225,
+    "y": 0.0629
+   },
+   {
+    "x": 0.25,
+    "y": 0.0612
+   },
+   {
+    "x": 0.275,
+    "y": 0.0589
+   },
+   {
+    "x": 0.3,
+    "y": 0.0531
+   },
+   {
+    "x": 0.325,
+    "y": 0.0512
+   },
+   {
+    "x": 0.35,
+    "y": 0.0495
+   },
+   {
+    "x": 0.375,
+    "y": 0.0485
+   },
+   {
+    "x": 0.4,
+    "y": 0.0461
+   },
+   {
+    "x": 0.425,
+    "y": 0.0446
+   },
+   {
+    "x": 0.45,
+    "y": 0.0425
+   },
+   {
+    "x": 0.475,
+    "y": 0.04
+   },
+   {
+    "x": 0.5,
+    "y": 0.0379
+   },
+   {
+    "x": 0.525,
+    "y": 0.0374
+   },
+   {
+    "x": 0.55,
+    "y": 0.0361
+   },
+   {
+    "x": 0.575,
+    "y": 0.0347
+   },
+   {
+    "x": 0.6,
+    "y": 0.0335
+   },
+   {
+    "x": 0.625,
+    "y": 0.0319
+   },
+   {
+    "x": 0.65,
+    "y": 0.0307
+   },
+   {
+    "x": 0.675,
+    "y": 0.0294
+   },
+   {
+    "x": 0.7,
+    "y": 0.0274
+   },
+   {
+    "x": 0.725,
+    "y": 0.0254
+   },
+   {
+    "x": 0.75,
+    "y": 0.0233
+   },
+   {
+    "x": 0.775,
+    "y": 0.0208
+   },
+   {
+    "x": 0.8,
+    "y": 0.0182
+   },
+   {
+    "x": 0.825,
+    "y": 0.016
+   },
+   {
+    "x": 0.85,
+    "y": 0.0131
+   },
+   {
+    "x": 0.875,
+    "y": 0.0113
+   },
+   {
+    "x": 0.9,
+    "y": 0.0096
+   },
+   {
+    "x": 0.925,
+    "y": 0.0082
+   },
+   {
+    "x": 0.95,
+    "y": 0.0073
+   },
+   {
+    "x": 0.975,
+    "y": 0.0063
+   },
+   {
+    "x": 1.0,
+    "y": 0.0018
+   }
+  ]
+ },
+ "graph_gradient_boosting": {
+  "roc_auc": 0.9746,
+  "pr_auc": 0.1211,
+  "precision": 0.0088,
+  "recall": 0.9517,
+  "f1": 0.0174,
+  "precision_at_k": {
+   "P@10": 0.8,
+   "P@25": 0.84,
+   "P@50": 0.82,
+   "P@100": 0.61
+  },
+  "threshold": 0.5,
+  "confusion_matrix": {
+   "true_negatives": 1112552,
+   "false_positives": 155308,
+   "false_negatives": 70,
+   "true_positives": 1379,
+   "total_transactions": 1269309,
+   "actual_laundering_count": 1449
+  },
+  "roc_curve": [
+   {
+    "x": 0.0,
+    "y": 0.0
+   },
+   {
+    "x": 0.0326,
+    "y": 0.8047
+   },
+   {
+    "x": 0.0716,
+    "y": 0.8737
+   },
+   {
+    "x": 0.1018,
+    "y": 0.9227
+   },
+   {
+    "x": 0.1258,
+    "y": 0.9558
+   },
+   {
+    "x": 0.1515,
+    "y": 0.9786
+   },
+   {
+    "x": 0.1804,
+    "y": 0.9931
+   },
+   {
+    "x": 0.2082,
+    "y": 0.9972
+   },
+   {
+    "x": 0.237,
+    "y": 0.9986
+   },
+   {
+    "x": 0.2657,
+    "y": 1.0
+   },
+   {
+    "x": 0.2937,
+    "y": 1.0
+   },
+   {
+    "x": 0.321,
+    "y": 1.0
+   },
+   {
+    "x": 0.3476,
+    "y": 1.0
+   },
+   {
+    "x": 0.3733,
+    "y": 1.0
+   },
+   {
+    "x": 0.3975,
+    "y": 1.0
+   },
+   {
+    "x": 0.4235,
+    "y": 1.0
+   },
+   {
+    "x": 0.4481,
+    "y": 1.0
+   },
+   {
+    "x": 0.4738,
+    "y": 1.0
+   },
+   {
+    "x": 0.4984,
+    "y": 1.0
+   },
+   {
+    "x": 0.5222,
+    "y": 1.0
+   },
+   {
+    "x": 0.546,
+    "y": 1.0
+   },
+   {
+    "x": 0.5702,
+    "y": 1.0
+   },
+   {
+    "x": 0.5939,
+    "y": 1.0
+   },
+   {
+    "x": 0.6176,
+    "y": 1.0
+   },
+   {
+    "x": 0.6409,
+    "y": 1.0
+   },
+   {
+    "x": 0.6639,
+    "y": 1.0
+   },
+   {
+    "x": 0.6872,
+    "y": 1.0
+   },
+   {
+    "x": 0.7109,
+    "y": 1.0
+   },
+   {
+    "x": 0.7342,
+    "y": 1.0
+   },
+   {
+    "x": 0.7576,
+    "y": 1.0
+   },
+   {
+    "x": 0.7813,
+    "y": 1.0
+   },
+   {
+    "x": 0.8051,
+    "y": 1.0
+   },
+   {
+    "x": 0.8285,
+    "y": 1.0
+   },
+   {
+    "x": 0.8519,
+    "y": 1.0
+   },
+   {
+    "x": 0.8756,
+    "y": 1.0
+   },
+   {
+    "x": 0.8993,
+    "y": 1.0
+   },
+   {
+    "x": 0.9229,
+    "y": 1.0
+   },
+   {
+    "x": 0.9472,
+    "y": 1.0
+   },
+   {
+    "x": 0.9726,
+    "y": 1.0
+   },
+   {
+    "x": 1.0,
+    "y": 1.0
+   }
+  ],
+  "pr_curve": [
+   {
+    "x": 0.0,
+    "y": 1.0
+   },
+   {
+    "x": 0.025,
+    "y": 0.8214
+   },
+   {
+    "x": 0.05,
+    "y": 0.5664
+   },
+   {
+    "x": 0.075,
+    "y": 0.4486
+   },
+   {
+    "x": 0.1,
+    "y": 0.3333
+   },
+   {
+    "x": 0.125,
+    "y": 0.2582
+   },
+   {
+    "x": 0.15,
+    "y": 0.2049
+   },
+   {
+    "x": 0.175,
+    "y": 0.1673
+   },
+   {
+    "x": 0.2,
+    "y": 0.1313
+   },
+   {
+    "x": 0.225,
+    "y": 0.1193
+   },
+   {
+    "x": 0.25,
+    "y": 0.1123
+   },
+   {
+    "x": 0.275,
+    "y": 0.108
+   },
+   {
+    "x": 0.3,
+    "y": 0.0932
+   },
+   {
+    "x": 0.325,
+    "y": 0.0853
+   },
+   {
+    "x": 0.35,
+    "y": 0.0774
+   },
+   {
+    "x": 0.375,
+    "y": 0.071
+   },
+   {
+    "x": 0.4,
+    "y": 0.0668
+   },
+   {
+    "x": 0.425,
+    "y": 0.0629
+   },
+   {
+    "x": 0.45,
+    "y": 0.0598
+   },
+   {
+    "x": 0.475,
+    "y": 0.0573
+   },
+   {
+    "x": 0.5,
+    "y": 0.0547
+   },
+   {
+    "x": 0.525,
+    "y": 0.0518
+   },
+   {
+    "x": 0.55,
+    "y": 0.0493
+   },
+   {
+    "x": 0.575,
+    "y": 0.0467
+   },
+   {
+    "x": 0.6,
+    "y": 0.0447
+   },
+   {
+    "x": 0.625,
+    "y": 0.0425
+   },
+   {
+    "x": 0.65,
+    "y": 0.0401
+   },
+   {
+    "x": 0.675,
+    "y": 0.0389
+   },
+   {
+    "x": 0.7,
+    "y": 0.0378
+   },
+   {
+    "x": 0.725,
+    "y": 0.0351
+   },
+   {
+    "x": 0.75,
+    "y": 0.0327
+   },
+   {
+    "x": 0.775,
+    "y": 0.031
+   },
+   {
+    "x": 0.8,
+    "y": 0.0279
+   },
+   {
+    "x": 0.825,
+    "y": 0.0239
+   },
+   {
+    "x": 0.85,
+    "y": 0.0181
+   },
+   {
+    "x": 0.875,
+    "y": 0.0136
+   },
+   {
+    "x": 0.9,
+    "y": 0.0117
+   },
+   {
+    "x": 0.925,
+    "y": 0.0101
+   },
+   {
+    "x": 0.95,
+    "y": 0.0089
+   },
+   {
+    "x": 0.975,
+    "y": 0.0078
+   },
+   {
+    "x": 1.0,
+    "y": 0.0046
+   }
+  ]
+ },
+ "feature_importance": [
+  {
+   "feature": "is_ach",
+   "importance": 0.3507,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "is_cheque",
+   "importance": 0.0798,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "src_velocity_per_day",
+   "importance": 0.0716,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "amount",
+   "importance": 0.0702,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "log_amount",
+   "importance": 0.0609,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "is_credit_card",
+   "importance": 0.0474,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "dst_in_degree",
+   "importance": 0.044,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "src_out_degree",
+   "importance": 0.0374,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "pagerank_ratio",
+   "importance": 0.0355,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "src_in_degree",
+   "importance": 0.0311,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "src_flow_asymmetry",
+   "importance": 0.0254,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "cross_bank",
+   "importance": 0.0232,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "is_reinvestment",
+   "importance": 0.0228,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "self_transfer",
+   "importance": 0.0197,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "is_cash",
+   "importance": 0.0123,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "src_pagerank",
+   "importance": 0.0107,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "hour_of_day",
+   "importance": 0.007,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "dst_flow_asymmetry",
+   "importance": 0.0062,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "same_community",
+   "importance": 0.0057,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "dst_pagerank",
+   "importance": 0.0053,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "cross_currency",
+   "importance": 0.0053,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "is_wire",
+   "importance": 0.0049,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "dst_out_degree",
+   "importance": 0.0037,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "dst_cycle_count",
+   "importance": 0.0032,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "dst_in_cycle",
+   "importance": 0.0024,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "src_cycle_count",
+   "importance": 0.0022,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "src_in_cycle",
+   "importance": 0.0018,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "dst_betweenness",
+   "importance": 0.0017,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "cur_saudi_riyal",
+   "importance": 0.0011,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "cur_bitcoin",
+   "importance": 0.0011,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "is_bitcoin",
+   "importance": 0.0009,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "cur_euro",
+   "importance": 0.0009,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "cur_us_dollar",
+   "importance": 0.0007,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "src_betweenness",
+   "importance": 0.0006,
+   "is_graph_feature": true
+  },
+  {
+   "feature": "cur_yen",
+   "importance": 0.0004,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "cur_rupee",
+   "importance": 0.0004,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "cur_brazil_real",
+   "importance": 0.0004,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "cur_mexican_peso",
+   "importance": 0.0003,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "cur_shekel",
+   "importance": 0.0002,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "cur_canadian_dollar",
+   "importance": 0.0002,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "cur_ruble",
+   "importance": 0.0002,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "cur_yuan",
+   "importance": 0.0002,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "cur_australian_dollar",
+   "importance": 0.0002,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "cur_swiss_franc",
+   "importance": 0.0001,
+   "is_graph_feature": false
+  },
+  {
+   "feature": "cur_uk_pound",
+   "importance": 0.0001,
+   "is_graph_feature": false
+  }
+ ],
+ "ablation_study": [
+  {
+   "stage_num": 1,
+   "stage": "Tabular Baseline",
+   "description": "Amount, hour of day, payment format & currency encodings, cross-currency, cross-bank, self-transfer",
+   "feature_count": 28,
+   "pr_auc": 0.0407,
+   "roc_auc": 0.9206,
+   "f1_score": 0.0206,
+   "precision": 0.0104,
+   "recall": 0.862,
+   "incremental_pr_auc_lift": 0.0
+  },
+  {
+   "stage_num": 2,
+   "stage": "+ PageRank Centrality",
+   "description": "Tabular + PageRank structural influence score & ratio",
+   "feature_count": 31,
+   "pr_auc": 0.0521,
+   "roc_auc": 0.9608,
+   "f1_score": 0.0127,
+   "precision": 0.0064,
+   "recall": 0.9593,
+   "incremental_pr_auc_lift": 0.0114
+  },
+  {
+   "stage_num": 3,
+   "stage": "+ Betweenness Centrality",
+   "description": "Tabular + PageRank + Betweenness money-mule bridge score",
+   "feature_count": 33,
+   "pr_auc": 0.0581,
+   "roc_auc": 0.961,
+   "f1_score": 0.013,
+   "precision": 0.0065,
+   "recall": 0.9538,
+   "incremental_pr_auc_lift": 0.006
+  },
+  {
+   "stage_num": 4,
+   "stage": "+ Community & Flow Asymmetry",
+   "description": "Tabular + Centrality + Louvain community match + In/Out flow asymmetry & degrees",
+   "feature_count": 41,
+   "pr_auc": 0.0429,
+   "roc_auc": 0.9647,
+   "f1_score": 0.0127,
+   "precision": 0.0064,
+   "recall": 0.9662,
+   "incremental_pr_auc_lift": -0.0152
+  },
+  {
+   "stage_num": 5,
+   "stage": "+ Multi-Hop Cycle Ring Flags (Full Model)",
+   "description": "All features + Directed cycle detection (3-5 hops) ring flags",
+   "feature_count": 45,
+   "pr_auc": 0.0884,
+   "roc_auc": 0.9654,
+   "f1_score": 0.0127,
+   "precision": 0.0064,
+   "recall": 0.9683,
+   "incremental_pr_auc_lift": 0.0455
+  }
+ ],
+ "shap_summary": {
+  "status": "computed",
+  "ranking": [
+   {
+    "feature": "is_ach",
+    "mean_shap_value": 0.1995,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "is_cheque",
+    "mean_shap_value": 0.0546,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "amount",
+    "mean_shap_value": 0.0502,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "src_velocity_per_day",
+    "mean_shap_value": 0.0439,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "log_amount",
+    "mean_shap_value": 0.0416,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "is_credit_card",
+    "mean_shap_value": 0.0327,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "src_out_degree",
+    "mean_shap_value": 0.0243,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "pagerank_ratio",
+    "mean_shap_value": 0.0207,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "dst_in_degree",
+    "mean_shap_value": 0.02,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "src_in_degree",
+    "mean_shap_value": 0.0185,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "src_flow_asymmetry",
+    "mean_shap_value": 0.0149,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "is_cash",
+    "mean_shap_value": 0.0114,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "cross_bank",
+    "mean_shap_value": 0.0105,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "self_transfer",
+    "mean_shap_value": 0.0082,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "src_pagerank",
+    "mean_shap_value": 0.0071,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "is_reinvestment",
+    "mean_shap_value": 0.0057,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "same_community",
+    "mean_shap_value": 0.0045,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "dst_out_degree",
+    "mean_shap_value": 0.0037,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "dst_flow_asymmetry",
+    "mean_shap_value": 0.0036,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "cross_currency",
+    "mean_shap_value": 0.0033,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "is_wire",
+    "mean_shap_value": 0.0025,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "cur_bitcoin",
+    "mean_shap_value": 0.002,
+    "impact": "High Positive Risk Influence"
+   },
+   {
+    "feature": "hour_of_day",
+    "mean_shap_value": 0.002,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "dst_pagerank",
+    "mean_shap_value": 0.0017,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "is_bitcoin",
+    "mean_shap_value": 0.0015,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "cur_us_dollar",
+    "mean_shap_value": 0.001,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "cur_shekel",
+    "mean_shap_value": 0.0009,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "dst_betweenness",
+    "mean_shap_value": 0.0009,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "cur_saudi_riyal",
+    "mean_shap_value": 0.0007,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "dst_cycle_count",
+    "mean_shap_value": 0.0006,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "cur_euro",
+    "mean_shap_value": 0.0005,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "src_cycle_count",
+    "mean_shap_value": 0.0005,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "dst_in_cycle",
+    "mean_shap_value": 0.0005,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "src_in_cycle",
+    "mean_shap_value": 0.0004,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "src_betweenness",
+    "mean_shap_value": 0.0003,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "cur_brazil_real",
+    "mean_shap_value": 0.0001,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "cur_yen",
+    "mean_shap_value": 0.0001,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "cur_rupee",
+    "mean_shap_value": 0.0001,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "cur_yuan",
+    "mean_shap_value": 0.0001,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "cur_mexican_peso",
+    "mean_shap_value": 0.0001,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "cur_swiss_franc",
+    "mean_shap_value": 0.0001,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "cur_ruble",
+    "mean_shap_value": 0.0001,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "cur_canadian_dollar",
+    "mean_shap_value": 0.0,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "cur_uk_pound",
+    "mean_shap_value": 0.0,
+    "impact": "Moderate Context"
+   },
+   {
+    "feature": "cur_australian_dollar",
+    "mean_shap_value": 0.0,
+    "impact": "Moderate Context"
+   }
+  ],
+  "top_driving_feature": "is_ach"
+ },
+ "split": {
+  "method": "temporal",
+  "test_graph": "train",
+  "train_end": "2022/09/08 03:10",
+  "test_start": "2022/09/08 03:10",
+  "train_positive_rate": 0.01014,
+  "test_positive_rate": 0.00114
+ },
+ "test_sample_size": 1269309,
+ "train_sample_size": 303073,
+ "pr_auc_lift_pct": 60.2,
+ "dataset": {
+  "rows": 5077237,
+  "laundering": 4522,
+  "scope": "IBM HI-Small, 2022/09/01-2022/09/10 (full window)"
+ }
+}

@@ -1,0 +1,74 @@
+services:
+  # ==========================================================
+  # Neo4j Graph Database with Graph Data Science (GDS) & APOC
+  # ==========================================================
+  neo4j:
+    image: neo4j:5.20.0
+    container_name: aml_neo4j
+    ports:
+      - "7474:7474"   # Neo4j Browser UI
+      - "7687:7687"   # Bolt Protocol for Graph Queries
+    environment:
+      - NEO4J_AUTH=neo4j/password123
+      - NEO4J_PLUGINS=["graph-data-science", "apoc"]
+      - NEO4J_dbms_security_procedures_unrestricted=gds.*,apoc.*
+      - NEO4J_dbms_security_procedures_allowlist=gds.*,apoc.*
+      - NEO4J_server_memory_heap_initial__size=256m
+      - NEO4J_server_memory_heap_max__size=768m
+      - NEO4J_server_memory_pagecache_size=256m
+      - NEO4J_dbms_default__listen__address=0.0.0.0
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+      - ./data:/var/lib/neo4j/import
+      - neo4j_plugins:/plugins
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:7474 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 25s
+    cpus: 1.0
+    mem_limit: 1536m
+    networks:
+      - aml-network
+    restart: unless-stopped
+
+  # ==========================================================
+  # AML Backend, ML Pipeline, GDS Engine & Forensic Dashboard
+  # ==========================================================
+  aml-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aml_forensics_app
+    ports:
+      - "8000:8000"   # FastAPI Backend & Interactive UI
+    environment:
+      - PYTHONPATH=/app
+      - NEO4J_URI=bolt://neo4j:7687
+      - NEO4J_USER=neo4j
+      - NEO4J_PASSWORD=password123
+      - DATA_PATH=/app/data/HI-Small_Trans.csv
+      - PORT=8000
+      - AML_N_JOBS=2
+    cpus: 2.0
+    mem_limit: 3g
+    volumes:
+      - ./data:/app/data
+      - ./dashboard:/app/dashboard
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    networks:
+      - aml-network
+    restart: on-failure:3
+
+networks:
+  aml-network:
+    driver: bridge
+
+volumes:
+  neo4j_data:
+  neo4j_logs:
+  neo4j_plugins:
